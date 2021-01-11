@@ -1,23 +1,24 @@
 package com.bak.bankkata.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class CustomerAccountDetails {
-//	reference_no, name, mobile no, address, identity, identity_no, status(P - pending, C- completed), branch_id
     @Id
 	@Column  
+	private int id;  
+    @Column  
 	private int accountno;  
-	//defining name as column name  
 	@Column  
 	private String name;  
-	//defining age as column name  
 	@Column  
 	private int mobileno;  
-	//defining email as column name  
 	@Column  
 	private String address;
-	
 	@Column  
 	private long amount;
 	@Column  
@@ -26,6 +27,12 @@ public class CustomerAccountDetails {
 	private String email;
 	@Column  
 	private String modifiedon;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getAccountno() {
 		return accountno;
 	}
@@ -74,9 +81,16 @@ public class CustomerAccountDetails {
 	public void setModifiedon(String modifiedon) {
 		this.modifiedon = modifiedon;
 	}
-	public CustomerAccountDetails(int accountno, String name, int mobileno, String address, long amount, String status,
-			String email, String modifiedon) {
+	@Override
+	public String toString() {
+		return "CustomerAccountDetails [id=" + id + ", accountno=" + accountno + ", name=" + name + ", mobileno="
+				+ mobileno + ", address=" + address + ", amount=" + amount + ", status=" + status + ", email=" + email
+				+ ", modifiedon=" + modifiedon + "]";
+	}
+	public CustomerAccountDetails(int id, int accountno, String name, int mobileno, String address, long amount,
+			String status, String email, String modifiedon) {
 		super();
+		this.id = id;
 		this.accountno = accountno;
 		this.name = name;
 		this.mobileno = mobileno;
@@ -86,7 +100,7 @@ public class CustomerAccountDetails {
 		this.email = email;
 		this.modifiedon = modifiedon;
 	}
-	
+
 	
 	
 }
